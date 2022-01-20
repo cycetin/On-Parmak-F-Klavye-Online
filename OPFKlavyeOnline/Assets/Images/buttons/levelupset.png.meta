@@ -1,0 +1,706 @@
+fileFormatVersion: 2
+guid: 00f4afff9f86cc9408f4727062701fb2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -105174501211289152
+    second: levelupset_0
+  - first:
+      213: -8353029738672120721
+    second: levelupset_1
+  - first:
+      213: 1316810759954770288
+    second: levelupset_2
+  - first:
+      213: 8682585726026562821
+    second: levelupset_3
+  - first:
+      213: -7593346990101652294
+    second: levelupset_4
+  - first:
+      213: -2488343589269279439
+    second: levelupset_5
+  - first:
+      213: -7523600149982741886
+    second: levelupset_6
+  - first:
+      213: 4762538990981643019
+    second: levelupset_7
+  - first:
+      213: -7390835033338315154
+    second: levelupset_8
+  - first:
+      213: 8117787772523410589
+    second: levelupset_9
+  - first:
+      213: 912940144377450068
+    second: levelupset_10
+  - first:
+      213: -3602224183342430695
+    second: levelupset_11
+  - first:
+      213: -2860641343829297568
+    second: levelupset_12
+  - first:
+      213: 7923680768085702571
+    second: levelupset_13
+  - first:
+      213: 3834655786189249655
+    second: levelupset_14
+  - first:
+      213: 231850058529058122
+    second: levelupset_15
+  - first:
+      213: 8980892190774960674
+    second: levelupset_16
+  - first:
+      213: -81569937557742431
+    second: levelupset_17
+  - first:
+      213: -1811364380160416415
+    second: levelupset_18
+  - first:
+      213: 3076041838788097012
+    second: levelupset_19
+  - first:
+      213: -5543962620059095062
+    second: levelupset_20
+  - first:
+      213: -4220767590175852764
+    second: levelupset_21
+  - first:
+      213: -2400230327353554708
+    second: levelupset_22
+  - first:
+      213: -1042698320019726670
+    second: levelupset_23
+  - first:
+      213: -7127841172260465992
+    second: levelupset_24
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: levelupset_0
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 1468
+        width: 435
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c94fdf29585a8ef0800000000000000
+      internalID: -105174501211289152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_1
+      rect:
+        serializedVersion: 2
+        x: 653
+        y: 1444
+        width: 289
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6c9c2c75b3141c80800000000000000
+      internalID: -8353029738672120721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_2
+      rect:
+        serializedVersion: 2
+        x: 1013
+        y: 1386
+        width: 275
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 079248fc860464210800000000000000
+      internalID: 1316810759954770288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_3
+      rect:
+        serializedVersion: 2
+        x: 1337
+        y: 1388
+        width: 274
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50db0bb27bdbe7870800000000000000
+      internalID: 8682585726026562821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_4
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 1225
+        width: 472
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abc95bec4230f9690800000000000000
+      internalID: -7593346990101652294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_5
+      rect:
+        serializedVersion: 2
+        x: 651
+        y: 1281
+        width: 290
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13deb7a70b0a77dd0800000000000000
+      internalID: -2488343589269279439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_6
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 1253
+        width: 417
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28af33c768dc69790800000000000000
+      internalID: -7523600149982741886
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_7
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 1040
+        width: 440
+        height: 182
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0b7862baffe71240800000000000000
+      internalID: 4762538990981643019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_8
+      rect:
+        serializedVersion: 2
+        x: 616
+        y: 1023
+        width: 243
+        height: 249
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6e7b5c02ba7e6990800000000000000
+      internalID: -7390835033338315154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_9
+      rect:
+        serializedVersion: 2
+        x: 863
+        y: 1133
+        width: 417
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d94744f18fc28a070800000000000000
+      internalID: 8117787772523410589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_10
+      rect:
+        serializedVersion: 2
+        x: 1392
+        y: 1180
+        width: 222
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45ecfce693a6bac00800000000000000
+      internalID: 912940144377450068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_11
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 860
+        width: 603
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9168d8ec034520ec0800000000000000
+      internalID: -3602224183342430695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_12
+      rect:
+        serializedVersion: 2
+        x: 797
+        y: 824
+        width: 439
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0663247aad5fc48d0800000000000000
+      internalID: -2860641343829297568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_13
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 933
+        width: 472
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba7b7575da196fd60800000000000000
+      internalID: 7923680768085702571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_14
+      rect:
+        serializedVersion: 2
+        x: 179
+        y: 720
+        width: 407
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77cd4b3ee1f673530800000000000000
+      internalID: 3834655786189249655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_15
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 669
+        width: 408
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4d27cb5662b73300800000000000000
+      internalID: 231850058529058122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_16
+      rect:
+        serializedVersion: 2
+        x: 1147
+        y: 709
+        width: 435
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 222a83d5dd982ac70800000000000000
+      internalID: 8980892190774960674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_17
+      rect:
+        serializedVersion: 2
+        x: 177
+        y: 522
+        width: 435
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ac158fe2943edef0800000000000000
+      internalID: -81569937557742431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_18
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 519
+        width: 261
+        height: 109
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1652eb971bdbcd6e0800000000000000
+      internalID: -1811364380160416415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_19
+      rect:
+        serializedVersion: 2
+        x: 984
+        y: 502
+        width: 602
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f3343b31cb40ba20800000000000000
+      internalID: 3076041838788097012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_20
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 255
+        width: 439
+        height: 181
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aef6557ce53ef03b0800000000000000
+      internalID: -5543962620059095062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_21
+      rect:
+        serializedVersion: 2
+        x: 639
+        y: 242
+        width: 218
+        height: 233
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42736144d32dc65c0800000000000000
+      internalID: -4220767590175852764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_22
+      rect:
+        serializedVersion: 2
+        x: 883
+        y: 242
+        width: 227
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce8c8f6fb3ba0bed0800000000000000
+      internalID: -2400230327353554708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_23
+      rect:
+        serializedVersion: 2
+        x: 1138
+        y: 240
+        width: 218
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bed35307679781f0800000000000000
+      internalID: -1042698320019726670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: levelupset_24
+      rect:
+        serializedVersion: 2
+        x: 1382
+        y: 240
+        width: 227
+        height: 232
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b2d2000832d41d90800000000000000
+      internalID: -7127841172260465992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: e7f7f35ae883c6d4faed1092f16a8940
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

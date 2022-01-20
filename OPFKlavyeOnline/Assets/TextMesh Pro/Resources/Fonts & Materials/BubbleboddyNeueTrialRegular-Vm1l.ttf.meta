@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: b372a9445ff4d5a439e61f49935ce84a
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - Bubbleboddy Neue Trial
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 80e63f140e34e4a4cbc1508fd3911d74, type: 3}
+  - {fileID: 12800000, guid: a6c13a5e041100a448a8a84504e011a1, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
