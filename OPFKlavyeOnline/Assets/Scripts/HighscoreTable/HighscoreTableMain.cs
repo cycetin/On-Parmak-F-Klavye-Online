@@ -1,40 +1,79 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using FirebaseWebGL.Examples.Utils;
+using FirebaseWebGL.Scripts.FirebaseBridge;
+using FirebaseWebGL.Scripts.Objects;
+using System;
 
 
-public class HighscoreTableMain : MonoBehaviour {
+public class HighscoreTableMain : MonoBehaviour
+{
 
-    private Transform entryContainer;
-    private Transform entryTemplate;
-    private List<Transform> highscoreEntryTransformList;
-    private int count = 0;
+    
 
-    private void Awake() {
+
+
+
+    public void DisplayData(string data)
+    {
+          Transform entryContainer;
+      Transform entryTemplate;
+      List<Transform> highscoreEntryTransformList;
+    int count = 0;
         entryContainer = transform.Find("highscoreEntryContainer");
         entryTemplate = entryContainer.Find("highscoreEntryTemplate");
-
         entryTemplate.gameObject.SetActive(false);
 
-        string jsonString = PlayerPrefs.GetString("highscoreTable" + SceneManager.GetActiveScene().name);
-        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+        Highscores highscores = new Highscores();
+        List<HighscoreEntry> highscoreEntryList1 = new List<HighscoreEntry>();
 
-        if (highscores == null) {
-            // There's no stored table, initialize
-            
-            AddHighscoreEntry(0, " ");
-           
-            // Reload
-            jsonString = PlayerPrefs.GetString("highscoreTable" + SceneManager.GetActiveScene().name);
-            highscores = JsonUtility.FromJson<Highscores>(jsonString);
+        string[] infosArray = data.Split(new string[] { "}," }, StringSplitOptions.None);
+
+
+
+        for (int i = infosArray.Length - 1; i >= 0; i--)
+        {
+            // Console.WriteLine(infosArray[i]);
+            string str = getBetween(infosArray[i], "name", "score");
+            //  Console.WriteLine(str+"\n");
+            string uName = getBetween(str, "\":\"", "\",\"");
+           // Console.WriteLine(infosArray[i] + "---\n");
+            string uScore = infosArray[i].Split(',')[infosArray[i].Split(',').Length - 1].Split(':')[1];
+            if (i == infosArray.Length - 1)
+            {
+                uScore = uScore.Substring(0, uScore.Length - 2);
+            }
+
+
+
+
+
+            HighscoreEntry h1 = new HighscoreEntry();
+            h1.name = uName;
+            h1.score = int.Parse(uScore);
+            highscoreEntryList1.Add(h1);
+            // Console.WriteLine(uName + "-" + uScore + " \n");
+            // string trueC = getBetween(trueC1, "+", "\"");
+
+            /*  if (getBetween(level, "\":\"", "\",\"").Equals(levelText.text))
+              {
+                  string str = getBetween(date, "\":\"", "\",\"").PadRight(17, ' ') + " | " + getBetween(time, "\":\"", "\",\"").PadRight(5, ' ') + " | " + trueC.PadRight(9 - trueC.Length, ' ') + " | " + getBetween(falseC, "\":\"", "\",\"").PadRight(9 - getBetween(falseC, "\":\"", "\",\"").Length, ' ') + " | " + getBetween(missedC, "\":\"", "\",\"").PadRight(9 - getBetween(missedC, "\":\"", "\",\"").Length, ' ') + " | " + getBetween(iScore, "\":\"", "\",\"").PadRight(9 - getBetween(iScore, "\":\"", "\",\"").Length, ' ') + " | " + getBetween(avarage, "\":\"", "\",\"").PadRight(10 - getBetween(avarage, "\":\"", "\",\"").Length, ' ') + "\n";
+
+                  lastScoreText = lastScoreText + str + "\n";
+              }*/
         }
+        highscores.highscoreEntryList = highscoreEntryList1;
+        for (int i = 0; i < highscores.highscoreEntryList.Count; i++)
+        {
 
-        // Sort entry list by Score
-        for (int i = 0; i < highscores.highscoreEntryList.Count; i++) {
-            for (int j = i + 1; j < highscores.highscoreEntryList.Count; j++) {
-                if (highscores.highscoreEntryList[j].score > highscores.highscoreEntryList[i].score) {
+            for (int j = i + 1; j < highscores.highscoreEntryList.Count; j++)
+            {
+                if (highscores.highscoreEntryList[j].score > highscores.highscoreEntryList[i].score)
+                {
                     // Swap
                     HighscoreEntry tmp = highscores.highscoreEntryList[i];
                     highscores.highscoreEntryList[i] = highscores.highscoreEntryList[j];
@@ -44,18 +83,98 @@ public class HighscoreTableMain : MonoBehaviour {
         }
 
         highscoreEntryTransformList = new List<Transform>();
-        foreach (HighscoreEntry highscoreEntry in highscores.highscoreEntryList) {
-            if (count<10)
+
+        foreach (HighscoreEntry highscoreEntry in highscores.highscoreEntryList)
+        {
+            if (count < 10)
             {
-                CreateHighscoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
-            }            
+                CreateHighscoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList, entryTemplate);
+            }
             count++;
         }
+
+
+       // Console.WriteLine(data);
+        // getData = data;
+        // Debug.Log(data);
     }
 
-    private void CreateHighscoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList) {
+    public void DisplayInfo(string info)
+    {
+      //  Console.WriteLine(info);
+        // Debug.Log(info);
+    }
+
+    public void DisplayErrorObject(string error)
+    {
+        var parsedError = StringSerializationAPI.Deserialize(typeof(FirebaseError), error) as FirebaseError;
+        DisplayError(parsedError.message);
+    }
+
+    public void DisplayError(string error)
+    {
+        Console.WriteLine(error);
+        //  Debug.LogError(error);
+    }
+
+
+
+    private void Awake()
+    {
+        FirebaseDatabase.GetJSON("highscoreTableMain", gameObject.name, "DisplayData", "DisplayErrorObject");
+        /*   entryContainer = transform.Find("highscoreEntryContainer");
+           entryTemplate = entryContainer.Find("highscoreEntryTemplate");       
+           entryTemplate.gameObject.SetActive(false);*/
+
+        /*  // string jsonString = PlayerPrefs.GetString("highscoreTable" + SceneManager.GetActiveScene().name + WordManager.letters);
+           FirebaseDatabase.GetJSON("highscoreTable" + SceneManager.GetActiveScene().name + WordManager.letters, gameObject.name, "DisplayData", "DisplayErrorObject");
+           Highscores highscores = JsonUtility.FromJson<Highscores>(getData);
+
+
+           if (highscores == null)
+           {
+
+                 // AddHighscoreEntry(0, " ");
+                // jsonString = PlayerPrefs.GetString("highscoreTable" + SceneManager.GetActiveScene().name + WordManager.letters);
+               // FirebaseDatabase.GetJSON("highscoreTable" + SceneManager.GetActiveScene().name + WordManager.letters, gameObject.name, "DisplayData", "DisplayErrorObject");
+              // highscores = JsonUtility.FromJson<Highscores>(getData);
+           }
+
+           // Sort entry list by Score
+           for (int i = 0; i < highscores.highscoreEntryList.Count; i++)
+           {
+               for (int j = i + 1; j < highscores.highscoreEntryList.Count; j++)
+               {
+                   if (highscores.highscoreEntryList[j].score > highscores.highscoreEntryList[i].score)
+                   {
+                       // Swap
+                       HighscoreEntry tmp = highscores.highscoreEntryList[i];
+                       highscores.highscoreEntryList[i] = highscores.highscoreEntryList[j];
+                       highscores.highscoreEntryList[j] = tmp;
+                   }
+               }
+           }
+
+           highscoreEntryTransformList = new List<Transform>();
+
+           foreach (HighscoreEntry highscoreEntry in highscores.highscoreEntryList)
+           {
+               if (count < 10)
+               {
+                   CreateHighscoreEntryTransform(highscoreEntry, entryContainer, highscoreEntryTransformList);
+               }
+               count++;
+           }*/
+    }
+
+
+
+    private void CreateHighscoreEntryTransform(HighscoreEntry highscoreEntry, Transform container, List<Transform> transformList, Transform entryTemplate)
+    {
         float templateHeight = 31f;
         Transform entryTransform = Instantiate(entryTemplate, container);
+
+
         RectTransform entryRectTransform = entryTransform.GetComponent<RectTransform>();
         entryRectTransform.anchoredPosition = new Vector2(0, -templateHeight * transformList.Count);
         entryTransform.gameObject.SetActive(true);
@@ -83,73 +202,84 @@ public class HighscoreTableMain : MonoBehaviour {
 
         // Set background visible odds and evens, easier to read
         entryTransform.Find("background").gameObject.SetActive(rank % 2 == 1);
-        
+
         // Highlight First
-        if (rank == 1) {
+        /*  if (rank == 1)
+          {
+              entryTransform.Find("posText").GetComponent<Text>().fontStyle = FontStyle.Normal;
+              entryTransform.Find("scoreText").GetComponent<Text>().fontStyle = FontStyle.Normal;
+              entryTransform.Find("nameText").GetComponent<Text>().fontStyle = FontStyle.Normal;
+          }*/
+        if (highscoreEntry.name == UserName.name && highscoreEntry.name != "OYUNCU")
+        {
             entryTransform.Find("posText").GetComponent<Text>().color = Color.blue;
             entryTransform.Find("scoreText").GetComponent<Text>().color = Color.blue;
             entryTransform.Find("nameText").GetComponent<Text>().color = Color.blue;
         }
 
         // Set tropy
-        switch (rank) {
-        default:
-            entryTransform.Find("trophy").gameObject.SetActive(false);
-            break;
-        case 1:
-            entryTransform.Find("trophy").GetComponent<Image>().color = Color.yellow;
-            break;
-        case 2:
-            entryTransform.Find("trophy").GetComponent<Image>().color = Color.gray;
-            break;
-        case 3:
-            entryTransform.Find("trophy").GetComponent<Image>().color = Color.white;
-            break;
-
+        switch (rank)
+        {
+            default:
+                entryTransform.Find("trophy").gameObject.SetActive(false);
+                break;
+            case 1:
+                entryTransform.Find("trophy").GetComponent<Image>().color = Color.yellow;
+                break;
+            case 2:
+                entryTransform.Find("trophy").GetComponent<Image>().color = Color.gray;
+                break;
+            case 3:
+                entryTransform.Find("trophy").GetComponent<Image>().color = Color.white;
+                break;
         }
 
         transformList.Add(entryTransform);
     }
+    public static string getBetween(string strSource, string strStart, string strEnd)
+    {
 
-    public void AddHighscoreEntry(int score, string name) {
+        int Start, End;
+        Start = strSource.IndexOf(strStart, 0) + strStart.Length;
+        End = strSource.IndexOf(strEnd, Start);
+        return strSource.Substring(Start, End - Start);
+
+    }
+    public void AddHighscoreEntry(int score, string name)
+    {
         // Create HighscoreEntry
         HighscoreEntry highscoreEntry = new HighscoreEntry { score = score, name = name };
-        
-        // Load saved Highscores
-        string jsonString = PlayerPrefs.GetString("highscoreTable" + SceneManager.GetActiveScene().name);
-        Highscores highscores = JsonUtility.FromJson<Highscores>(jsonString);
+        string json = JsonUtility.ToJson(highscoreEntry);
+        FirebaseDatabase.PushJSON("highscoreTableMain", json, gameObject.name, "DisplayInfo", "DisplayErrorObject");
 
-        if (highscores == null) {
-            // There's no stored table, initialize
-            highscores = new Highscores() {
-                highscoreEntryList = new List<HighscoreEntry>()
-            };
-        }
 
-        // Add new entry to Highscores
-        highscores.highscoreEntryList.Add(highscoreEntry);
 
-        // Save updated Highscores
-        string json = JsonUtility.ToJson(highscores);
-        PlayerPrefs.SetString("highscoreTable" + SceneManager.GetActiveScene().name, json);
-        PlayerPrefs.Save();
+        FirebaseDatabase.GetJSON("highscoreTableMain", gameObject.name, "DisplayData", "DisplayErrorObject");
+
+
+
+
+
     }
 
 
     public void Reset()
     {
-        PlayerPrefs.DeleteKey("highscoreTable" + SceneManager.GetActiveScene().name);
+
+        //   PlayerPrefs.DeleteKey("highscoreTable" + SceneManager.GetActiveScene().name + WordManager.letters);
     }
 
-    private class Highscores {
+    public class Highscores
+    {
         public List<HighscoreEntry> highscoreEntryList;
     }
 
     /*
      * Represents a single High score entry
      * */
-    [System.Serializable] 
-    private class HighscoreEntry {
+    [System.Serializable]
+    public class HighscoreEntry
+    {
         public int score;
         public string name;
     }

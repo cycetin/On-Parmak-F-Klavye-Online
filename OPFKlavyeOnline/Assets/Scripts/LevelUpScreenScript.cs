@@ -1,13 +1,10 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
-
+using FirebaseWebGL.Examples.Utils;
+using FirebaseWebGL.Scripts.FirebaseBridge;
+using FirebaseWebGL.Scripts.Objects;
 
 
 public class LevelUpScreenScript : MonoBehaviour
@@ -29,16 +26,16 @@ public class LevelUpScreenScript : MonoBehaviour
     public TextMeshProUGUI lettersText;
     public TMP_InputField lastScores;
     string letters = "";
-    public Dropdown levelDrop;
-    string path = "";
-    string content = "";
-    
+    public Dropdown levelDrop;   
+    public static int id = 0;
 
+  
 
-    
+  
+ 
+
     private void OnEnable()
     {
-
        
 
                     
@@ -142,121 +139,103 @@ public class LevelUpScreenScript : MonoBehaviour
             case 30:
                 letters = "AKEMİLUYTÜŞIRSCZODNĞÇGHVBFPJÖ,";
                 break;
-        }
-        CreateText();
-        CreateLastScores();
-        ReadTextFile();
-        lettersText.text = letters;
-      
+        }    
+
+        lettersText.text = letters;            
+
+        Infos log = new Infos();
+        log.date = System.DateTime.Now.ToString("dd.MM.yyyy - HH:mm ");
+        log.level = level.text;
+        log.letters = letters;
+        log.time = time.text;
+        log.trueCount = trueCount.text;
+        log.falseCount = falseCount.text;
+        log.missedCount = missedCount.text;
+        log.initScore = initScore.text;
+        log.average = average.text;    
+
+
+        string json1 = JsonUtility.ToJson(log);
+        FirebaseDatabase.PushJSON(userName.text, json1, gameObject.name, "DisplayInfo", "DisplayErrorObject");  
+       
+        //   FirebaseDatabase.PostJSON(userName.text, json, gameObject.name, "DisplayInfo", "DisplayErrorObject");
+        FirebaseDatabase.GetJSON(userName.text, gameObject.name, "DisplayData", "DisplayErrorObject");
+
+
+
+
+
     }
+
 
     void Start()
     {
 
-       
-
     }
-
-
-
-
-    private void ReadTextFile()
+    public static string getBetween(string strSource, string strStart, string strEnd)
     {
-        Stack lines = new Stack();
-        if (level.text.Equals("0"))
-        {
-            path = "OyuncuKayıtları/" + userName.text + "/" + userName.text + " Seviye " + letters + " Skorları.txt";
-        }
-        else
-        {
-            path = "OyuncuKayıtları/" + userName.text + "/" + userName.text + " Seviye " + level.text + " Skorları.txt";
-        }
-        StreamReader inp_stm = new StreamReader(path);
-
-        while (!inp_stm.EndOfStream)
-        {
-            lines.Push(inp_stm.ReadLine());           
-            
-        }
-
-        inp_stm.Close();
-        string str = "";
-        int counter = 0;
-        while (lines.Count>2&&counter<25)
-        {
-            str = str + lines.Pop() + "\n";
-            counter++;
-        }
-
-        lastScores.text = str;
-    }
-
-    private void CreateLastScores()
-    {
-        System.IO.Directory.CreateDirectory("OyuncuKayıtları/" + userName.text + "/");
-        //Path of the file
-        if (level.text.Equals("0"))
-        {
-             path = "OyuncuKayıtları/" + userName.text + "/" + userName.text + " Seviye " + letters + " Skorları.txt";
-        }
-        else
-        {
-             path = "OyuncuKayıtları/" + userName.text + "/" + userName.text + " Seviye " + level.text + " Skorları.txt";
-        }
         
-        //Create File if it doesn't exist
-        if (!File.Exists(path))
-        {
-            File.WriteAllText(path, "                              " + userName.text + " Seviye: " + level.text+" Harfler: "+letters+" Skorları \n\n");
-        }
-        //Content of the file
-   
-        //Add some to text to it
-
-        String content = System.DateTime.Now.ToString().PadRight(17, ' ') + " | " + time.text.PadRight(5, ' ') + " | " + trueCount.text.PadRight(9-trueCount.text.Length, ' ') + " | " + falseCount.text.PadRight(9-falseCount.text.Length, ' ') + " | " + missedCount.text.PadRight(9-missedCount.text.Length, ' ') + " | " + initScore.text.PadRight(9-initScore.text.Length, ' ') + " | " + average.text.PadRight(10-average.text.Length, ' ')+"\n";
-        File.AppendAllText(path, content);
-    }
-
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
+            int Start, End;
+            Start = strSource.IndexOf(strStart, 0) + strStart.Length;
+            End = strSource.IndexOf(strEnd, Start);      
+            return strSource.Substring(Start, End - Start);
       
     }
 
-    void CreateText()
-    {
-        System.IO.Directory.CreateDirectory("OyuncuKayıtları/"+userName.text+"/");
-        //Path of the file
-        string path ="OyuncuKayıtları/"+userName.text+"/"+userName.text+" Kayıtları.txt";
-        //Create File if it doesn't exist
-        if (!File.Exists(path))
+    public void DisplayData(string data)
+    {          
+        string[] infosArray = data.Split(new string[] { "}," }, StringSplitOptions.None);
+       
+        int stopPoint;
+        if (infosArray.Length>19)
         {
-            File.WriteAllText(path, "                              " + userName.text+ " Kayıtları \n\n");
+            stopPoint = infosArray.Length - 20;
         }
-        //Content of the file
-        content =
+        else
+        {
+            stopPoint = 0;
+        }
+        string lastScoreText = "";
 
-             "Tarih: " + System.DateTime.Now + "\n" +
-             "Seviye: " + level.text + "\n" +
-             "Harfler: " + letters + "\n" +
-             "Süre: " + time.text + "\n" +
-             "Doğru: " + trueCount.text + "\n" +
-             "Yanlış: " + falseCount.text + "\n" +
-             "Kaçan: " + missedCount.text + "\n" +
-             "Skor: " + initScore.text + "\n" +
-             "Ortalama: " + average.text + "\n" +
-             "------------------------------------------------------------------------\n"
-             ;
+        for (int i = infosArray.Length-1; i >= stopPoint; i--)
+        {
+           // Console.WriteLine(infosArray[i]);
+            string avarage= getBetween(infosArray[i], "average", "date");
+            string date = getBetween(infosArray[i], "date", "falseCount");
+            string falseC = getBetween(infosArray[i], "falseCount", "initScore");
+            string iScore = getBetween(infosArray[i], "initScore", "letters");
+            string letters1 = getBetween(infosArray[i], "letters", "level");
+            string level = getBetween(infosArray[i], "level", "missedCount");
+            string missedC = getBetween(infosArray[i], "missedCount", "time");
+            string time = getBetween(infosArray[i], "time", "trueCount");
+            string trueC1 = infosArray[i].Split(',')[infosArray[i].Split(',').Length - 1].Split(':')[1];           
+            string trueC = getBetween(trueC1, "+", "\"");   
 
+            if (getBetween(level, "\":\"", "\",\"").Equals(levelText.text))
+            {
+                string str = getBetween(date, "\":\"", "\",\"").PadRight(17, ' ') + " | " + getBetween(time, "\":\"", "\",\"").PadRight(5, ' ') + " | " + trueC.PadRight(9 - trueC.Length, ' ') + " | " + getBetween(falseC, "\":\"", "\",\"").PadRight(9 - getBetween(falseC, "\":\"", "\",\"").Length, ' ') + " | " + getBetween(missedC, "\":\"", "\",\"").PadRight(9 - getBetween(missedC, "\":\"", "\",\"").Length, ' ') + " | " + getBetween(iScore, "\":\"", "\",\"").PadRight(9 - getBetween(iScore, "\":\"", "\",\"").Length, ' ') + " | " + getBetween(avarage, "\":\"", "\",\"").PadRight(10 - getBetween(avarage, "\":\"", "\",\"").Length, ' ') + "\n";
 
-
-        //Add some to text to it
-        File.AppendAllText(path, content);
+                lastScoreText = lastScoreText + str + "\n";
+            }          
+        }
+       
+        lastScores.text = lastScoreText; 
+       
+    }
+    public void DisplayInfo(string info)
+    {
+       
+        Debug.Log(info);
     }
 
-    
-
+    public void DisplayErrorObject(string error)
+    {
+        var parsedError = StringSerializationAPI.Deserialize(typeof(FirebaseError), error) as FirebaseError;
+        DisplayError(parsedError.message);
+    }
+    public void DisplayError(string error)
+    {
+      
+        Debug.LogError(error);
+    }     
 }

@@ -30,13 +30,7 @@ public class LevelComp : MonoBehaviour
     {
         buttonClickSound.Play();
     }
-    public void NewUser()
-
-    {
-
-        hstm.AddHighscoreEntry(Spawner.totalSkor, Spawner.username);
-        SceneManager.LoadScene("UserInfo");
-    }
+   
 
     public void LoadLevelsScreen()
     {

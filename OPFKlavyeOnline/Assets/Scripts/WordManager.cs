@@ -25,7 +25,6 @@ public class WordManager : MonoBehaviour
     public TextMeshProUGUI initialLevelUpSkorCountText;
     public TextMeshProUGUI totalSkorText;
     public TextMeshProUGUI levelUI;
-
     public TextMeshProUGUI levelUpUserName;
     public TextMeshProUGUI levelUpLevel;
     public TextMeshProUGUI levelUpTime;
@@ -410,7 +409,17 @@ public class WordManager : MonoBehaviour
                     
 
                 }
-                if (Input.anyKeyDown && Input.inputString.ToUpper() == lettersOnProcess[currentWord - 1].GetComponent<TextMesh>().text)
+                if (lettersOnProcess[currentWord - 1].GetComponent<TextMesh>().text=="İ" && Input.anyKeyDown && (Input.inputString== "i" || Input.inputString == "İ"))
+                {
+                    explosion = Resources.Load<GameObject>("Patlama" + UnityEngine.Random.Range(1, 5).ToString());
+                    DeleteWord(lettersOnProcess[currentWord - 1].name);
+                    skor++;
+                    UserName.trueCount++;
+                    iTrueCount++;
+                    trueWordSound.Play();
+                }        
+
+                else if (Input.anyKeyDown && Input.inputString.ToUpper() == lettersOnProcess[currentWord - 1].GetComponent<TextMesh>().text)
                 {
                     explosion = Resources.Load<GameObject>("Patlama" + UnityEngine.Random.Range(1, 5).ToString());
                     DeleteWord(lettersOnProcess[currentWord - 1].name);
@@ -493,7 +502,6 @@ public class WordManager : MonoBehaviour
             rightHand.gameObject.GetComponent<Image>().sprite = Resources.Load(imageName, typeof(Sprite)) as Sprite;
             leftHand.gameObject.GetComponent<Image>().sprite = Resources.Load("lefthandempty", typeof(Sprite)) as Sprite;
         }
-
 
     }
 
@@ -628,7 +636,7 @@ public class WordManager : MonoBehaviour
 
 
     }
-
+  
     public void DeleteWord(string name)
     {
 
@@ -651,7 +659,7 @@ public class WordManager : MonoBehaviour
         currentWord += 1;
     }
 
-
+   
     public void QuitGame()
     {
      /*   if (KeyboardLayout.isChange)

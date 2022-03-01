@@ -31,7 +31,7 @@ public class Usernames : MonoBehaviour
     // Start is called before the first frame update
     public void ReadTxt()
     {
-        string file = "users.txt";
+        string file = "./users.txt";
         if (File.Exists(file))
         {
             m_DropOptions.Clear();
@@ -61,7 +61,7 @@ public class Usernames : MonoBehaviour
 
     public void DelUser()
     {
-        string file = "users.txt";
+        string file = "./users.txt";
         if (File.Exists(file))
         {
             m_DropOptions.Clear();
@@ -104,7 +104,7 @@ public class Usernames : MonoBehaviour
     {
         string inputValue = if1Text.text.ToUpper();
 
-        string file = "users.txt";
+        string file = "./users.txt";
 
 
         if (File.Exists(file))
@@ -150,7 +150,7 @@ public class Usernames : MonoBehaviour
         bool exist = false;
       
 
-        string file = "users.txt";
+        string file = "./users.txt";
         if (File.Exists(file))
         {
 

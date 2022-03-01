@@ -7,7 +7,7 @@ using UnityEngine.UI;
 using System.Globalization;
 public class UserName : MonoBehaviour
 {
-    public TMP_Dropdown usernameDrp;
+    public TMP_Text if1Text;
     public static new string name="OYUNCU";
     public static  int userPoint = 0;
     public static int trueCount = 0;
@@ -35,9 +35,9 @@ public class UserName : MonoBehaviour
     public void Next()
 
     {
-        if (usernameDrp.captionText.text.Length>0)
+        if (if1Text.text.Length>0)
         {
-            name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(usernameDrp.captionText.text);
+            name = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(if1Text.text);
         }
         
 
